@@ -353,12 +353,12 @@ UML 표기법
   - `(타입)`생략 가능
 - 일시적 다운캐스팅
   - 해당 메서드를 호출하는 순간 다운캐스팅
-  - ```java
+  - ```
     ((Child) poly).childMethod();
     ```
 
 ### 다운캐스팅 주의점
-- ClassCastException
+- _ClassCastException_
   - 사용할 수 없는 타입으로 다운캐스팅하는 경우 `ClassCastException`라는 예외가 발생
 - 업캐스팅은 객체를 생성하면 상위 부모 타입 모두 함께 생성되서 안전
 - 다운캐스팅은 부모 객체만 생성해서 하위 자식이 생성되지 않는 경우가 있기에 문제가 발생할 수 있다
@@ -368,4 +368,19 @@ UML 표기법
 **컴파일 오류**: 변수명 오타, 잘못된 클래스 등 자바 프로그램을 실행하기 전에 발생하는 오류(안전하고 좋은 오류)<br>
 
 **런타임 오류**: 프로그램이 실행되고 있는 시점에 발생하는 오류
+
+### instanceof
+- 변수가 참조하는 인스턴스의 타입을 확인하는 법: **instanceof**
+- 오른쪽에 있는 타입에 왼쪽에 있는 인스턴스의 타입이 들어가는 경우 `true`
+- new Parent() instanceof Parent // true
+- nwe Child() instanceof Parent // true
+- new Parent() instanceof Child // false
+
+### 다형성과 메서드 오버라이딩
+```java
+Parent poly = new Child();
+ ```
+- `poly.value`, `poly.method()`를 호출하면 Parent 타입에서 기능을 찾아 실행한다
+- 그런데 하위 타입이 오버라이딩 된 경우 `Child.method()`가 실행
+- **오버라이딩 된 메서드는 항상 우선권을 가진다**
 
